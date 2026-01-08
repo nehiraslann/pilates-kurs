@@ -9,7 +9,7 @@ export default function FilterPanel({ className }) {
 
     return (
         <div className={`space-y-8 ${className}`}>
-            {/* Category Filter */}
+            {/* Kategori filtresi */}
             <div>
                 <h3 className="text-sm font-medium text-gray-900 tracking-wide uppercase mb-3">Kategori</h3>
                 <div className="space-y-2">
@@ -31,7 +31,7 @@ export default function FilterPanel({ className }) {
                 </div>
             </div>
 
-            {/* Level Filter */}
+            {/* Seviye filtresi */}
             <div className="pt-6 border-t border-gray-100">
                 <h3 className="text-sm font-medium text-gray-900 tracking-wide uppercase mb-3">Seviye</h3>
                 <div className="space-y-2">
@@ -53,7 +53,7 @@ export default function FilterPanel({ className }) {
                 </div>
             </div>
 
-            {/* Sort Options */}
+            {/* Sıralama seçenekleri */}
             <div className="pt-6 border-t border-gray-100">
                 <h3 className="text-sm font-medium text-gray-900 tracking-wide uppercase mb-3">Sıralama</h3>
                 <select
@@ -67,7 +67,7 @@ export default function FilterPanel({ className }) {
                 </select>
             </div>
 
-            {/* Reset Filters */}
+            {/* Filtreleri sıfırla */}
             <div className="pt-6">
                 <button
                     onClick={() => setFilters({ category: 'All', level: 'All', priceSort: 'none' })}

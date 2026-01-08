@@ -6,20 +6,19 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-    // Initialize user from local storage or mock data
+    // Kullanıcıyı localStorage'dan veya mock veriden başlat
     const [user, setUser] = useState(() => {
         const savedUser = localStorage.getItem('rumeli_user');
         return savedUser ? JSON.parse(savedUser) : initialUserData;
     });
 
-    // Persist user to local storage whenever it changes
+    // Kullanıcı değiştiğinde localStorage'a kaydet
     useEffect(() => {
         localStorage.setItem('rumeli_user', JSON.stringify(user));
     }, [user]);
 
     const login = (userData) => {
-        // In a real app, this would verify credentials
-        // Here we just merge with existing structure or reset
+
         setUser({ ...initialUserData, ...userData });
     };
 

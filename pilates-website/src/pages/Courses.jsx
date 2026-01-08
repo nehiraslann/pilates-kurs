@@ -10,7 +10,7 @@ export default function Courses() {
     const [searchParams] = useSearchParams();
     const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
 
-    // Sync URL params with filters on mount
+    // URL parametrelerini filtrelerle eşitle
     useEffect(() => {
         const categoryParam = searchParams.get('category');
         if (categoryParam) {
@@ -33,18 +33,18 @@ export default function Courses() {
             </div>
 
             <div className="flex flex-col md:flex-row gap-8">
-                {/* Sidebar Filters */}
+                {/* Yan panel filtreleri */}
                 <aside className={`md:w-64 flex-shrink-0 ${isMobileFiltersOpen ? 'block' : 'hidden md:block'}`}>
                     <div className="bg-[#fdfbf7] p-6 rounded-lg shadow-sm border border-[#e6dccf] sticky top-24">
                         <FilterPanel />
                     </div>
                 </aside>
 
-                {/* Main Content */}
+                {/* Ana içerik */}
                 <div className="flex-grow">
                     <div className="bg-[#fdfbf7] p-4 rounded-lg shadow-sm border border-[#e6dccf] mb-6 flex items-center justify-between">
                         <span className="text-[#5c504a] font-medium">{filteredCourses.length} kurs bulundu</span>
-                        {/* Additional header controls can go here */}
+                        {/* Ek kontroller buraya eklenebilir */}
                     </div>
 
                     {filteredCourses.length > 0 ? (

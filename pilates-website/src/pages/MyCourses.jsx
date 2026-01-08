@@ -14,7 +14,7 @@ export default function MyCourses() {
     const enrolledCourses = user.enrolledCourses.map(enrolled => {
         const course = getCourseById(enrolled.courseId);
         return { ...course, progress: enrolled.progress };
-    }).filter(c => c.id); // Filter out any if course not found
+    }).filter(c => c.id); // Bulunamayan kursları filtrele
 
     return (
         <div className="w-full px-4 sm:px-6 lg:px-8 py-12 bg-[#fff0f5]">

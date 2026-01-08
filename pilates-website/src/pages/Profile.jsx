@@ -15,7 +15,7 @@ export default function Profile() {
     }
 
     const completedCoursesCount = user.completedCourses?.length || 0;
-    // Mock calculation for total learning time (e.g., 5 hours per completed course + some random current progress)
+    // Toplam öğrenme süresi hesaplaması
     const totalLearningHours = completedCoursesCount * 5 + Math.floor(Math.random() * 10);
 
     const handleChange = (e) => {
@@ -26,7 +26,7 @@ export default function Profile() {
         e.preventDefault();
         updateUserProfile(formData);
         setIsEditing(false);
-        // In a real app, we'd show a success toast here
+
     };
 
     return (
@@ -34,7 +34,7 @@ export default function Profile() {
             <h1 className="text-3xl font-bold text-gray-900 mb-8">Profilim</h1>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* Profile Card */}
+                {/* Profil kartı */}
                 <div className="md:col-span-1">
                     <div className="bg-[#fae8e6] rounded-xl shadow-sm border border-[#e6dccf] p-6 text-center">
                         <div className="relative inline-block mb-4">
@@ -66,7 +66,7 @@ export default function Profile() {
                     </div>
                 </div>
 
-                {/* Edit Form */}
+                {/* Düzenleme formu */}
                 <div className="md:col-span-2">
                     <div className="bg-[#fdfbf7] rounded-xl shadow-sm border border-[#e6dccf] p-8">
                         <div className="flex justify-between items-center mb-6">

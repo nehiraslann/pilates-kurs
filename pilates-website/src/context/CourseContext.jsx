@@ -11,18 +11,18 @@ export const CourseProvider = ({ children }) => {
     const [filters, setFilters] = useState({
         category: 'All',
         level: 'All',
-        priceSort: 'none' // none, asc, desc
+        priceSort: 'none' // varsayılan, artan, azalan
     });
 
-    // Extract unique categories and levels
+    // Benzersiz kategorileri ve seviyeleri çıkar
     const categories = useMemo(() => ['All', ...new Set(courses.map(c => c.category))], [courses]);
     const levels = useMemo(() => ['All', ...new Set(courses.map(c => c.level))], [courses]);
 
-    // Filter and sort courses
+    // Kursları filtrele ve sırala
     const filteredCourses = useMemo(() => {
         let result = courses;
 
-        // Search
+        // Arama
         if (searchQuery) {
             const query = searchQuery.toLowerCase();
             result = result.filter(c =>
@@ -31,17 +31,17 @@ export const CourseProvider = ({ children }) => {
             );
         }
 
-        // Category Filter
+        // Kategori filtresi
         if (filters.category !== 'All') {
             result = result.filter(c => c.category === filters.category);
         }
 
-        // Level Filter
+        // Seviye filtresi
         if (filters.level !== 'All') {
             result = result.filter(c => c.level === filters.level);
         }
 
-        // Price Sorting
+        // Fiyat sıralaması
         if (filters.priceSort === 'asc') {
             result = [...result].sort((a, b) => a.price - b.price);
         } else if (filters.priceSort === 'desc') {

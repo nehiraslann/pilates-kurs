@@ -13,7 +13,7 @@ export default function Favorites() {
 
     const favoriteCourses = user.favorites
         .map(id => getCourseById(id))
-        .filter(Boolean); // Filter out unused ids if course deleted
+        .filter(Boolean); // Silinen kursları filtrele
 
     return (
         <div className="w-full px-4 sm:px-6 lg:px-8 py-12 bg-[#fff0f5]">

@@ -9,7 +9,7 @@ import Profile from './pages/Profile';
 import { AuthProvider } from './context/AuthContext';
 import { CourseProvider } from './context/CourseContext';
 
-function App() {
+export default function App() {
   return (
     <AuthProvider>
       <CourseProvider>
@@ -29,4 +29,4 @@ function App() {
   );
 }
 
-export default App;
+

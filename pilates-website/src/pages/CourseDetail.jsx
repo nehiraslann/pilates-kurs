@@ -22,11 +22,9 @@ export default function CourseDetail() {
 
     const handleEnroll = () => {
         if (!user) {
-            // Simple mock login prompt
+            // Giriş uyarısı
             if (window.confirm("Kursa kaydolmak için giriş yapmalısınız. Giriş yapılsın mı?")) {
-                // Usually would redirect to login, but we are already 'logged in' via mock usually or trigger default user.
-                // Since AuthContext provides initial user, we assume logged in if user exists.
-                // If user is null, they need to 'login' (which we did blindly in Navbar).
+
                 return;
             }
         }
@@ -36,7 +34,7 @@ export default function CourseDetail() {
 
     return (
         <div className="bg-gray-50 min-h-screen pb-12">
-            {/* Hero Header */}
+            {/* Üst banner */}
             <div className="bg-[#4a4036] text-[#faf7f2] py-12 lg:py-20 relative overflow-hidden">
                 <div className="absolute inset-0 z-0 opacity-20">
                     <img src={course.image} alt="" className="w-full h-full object-cover blur-sm" />
@@ -70,7 +68,7 @@ export default function CourseDetail() {
                             </div>
                         </div>
 
-                        {/* Pricing Card (Desktop Overlay) */}
+                        {/* Fiyat kartı (Masaüstü) */}
                         <div className="hidden lg:block w-80 bg-white text-gray-900 rounded-xl shadow-2xl overflow-hidden self-start mt-8 lg:-mt-32">
                             <div className="h-48 overflow-hidden">
                                 <img src={course.image} alt="" className="w-full h-full object-cover" />
@@ -114,10 +112,10 @@ export default function CourseDetail() {
 
             <div className="w-full px-4 sm:px-6 lg:px-8 py-12">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    {/* Main Content */}
+                    {/* Ana içerik */}
                     <div className="lg:col-span-2 space-y-12">
 
-                        {/* Mobile Pricing (Visible only on small screens) */}
+                        {/* Mobil fiyat (Sadece küçük ekranlarda) */}
                         <div className="lg:hidden bg-white p-6 rounded-xl shadow-lg border border-gray-100">
                             <div className="text-3xl font-bold text-gray-900 mb-4">
                                 {course.price === 0 ? 'Ücretsiz' : `${course.price} TL`}
@@ -136,7 +134,7 @@ export default function CourseDetail() {
                             </Button>
                         </div>
 
-                        {/* Curriculum */}
+                        {/* Müfredat */}
                         <section>
                             <h2 className="text-2xl font-bold text-gray-900 mb-6">Müfredat</h2>
                             {course.curriculum && course.curriculum.length > 0 ? (
@@ -146,7 +144,7 @@ export default function CourseDetail() {
                             )}
                         </section>
 
-                        {/* Instructor */}
+                        {/* Eğitmen */}
                         <section>
                             <h2 className="text-2xl font-bold text-gray-900 mb-6">Eğitmen</h2>
                             <InstructorCard
@@ -156,11 +154,11 @@ export default function CourseDetail() {
                             />
                         </section>
 
-                        {/* Reviews (Simple List) */}
+                        {/* Yorumlar */}
                         <section>
                             <h2 className="text-2xl font-bold text-gray-900 mb-6">Yorumlar</h2>
                             <div className="space-y-6">
-                                {/* Mock Review */}
+                                {/* Örnek yorum */}
                                 <div className="border-b border-gray-100 pb-6">
                                     <div className="flex items-center mb-2">
                                         <div className="font-bold mr-2">Ayşe Y.</div>
