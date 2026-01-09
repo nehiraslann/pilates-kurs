@@ -38,15 +38,10 @@ export default function Navbar() {
                             <input
                                 type="text"
                                 placeholder="Kurs ara..."
-                                className="w-64 pl-10 pr-4 py-2 border border-[#e6dccf] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d48c94] focus:border-transparent bg-[#faf7f2]"
+                                className="w-64 pl-4 pr-4 py-2 border border-[#e6dccf] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d48c94] focus:border-transparent bg-[#faf7f2]"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                             />
-                            <div className="absolute left-3 top-2.5 text-gray-400">
-                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                </svg>
-                            </div>
                         </form>
 
                         {user ? (
@@ -72,8 +67,61 @@ export default function Navbar() {
                             <Button onClick={() => window.alert('Mock Login triggered! User set in AuthContext.')}>Giriş Yap</Button>
                         )}
                     </div>
+
+                    {/* Mobile menu button */}
+                    <div className="sm:hidden flex items-center">
+                        <button
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#d48c94]"
+                        >
+                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                {isMenuOpen ? (
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                ) : (
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                )}
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
+
+            {/* Mobile menu */}
+            {isMenuOpen && (
+                <div className="sm:hidden">
+                    <div className="px-2 pt-2 pb-3 space-y-1 bg-[#fdfbf7] border-t border-[#e6dccf]">
+                        <Link to="/" className="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">Ana Sayfa</Link>
+                        <Link to="/courses" className="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">Kurslar</Link>
+                        
+                        <form onSubmit={handleSearch} className="px-3 py-2">
+                            <input
+                                type="text"
+                                placeholder="Kurs ara..."
+                                className="w-full pl-4 pr-4 py-2 border border-[#e6dccf] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d48c94] focus:border-transparent bg-[#faf7f2]"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                        </form>
+
+                        {user ? (
+                            <div className="px-3 py-2 space-y-1">
+                                <Link to="/my-courses" className="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">Kurslarım</Link>
+                                <Link to="/favorites" className="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">Favoriler</Link>
+                                <Link to="/profile" className="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">Profilim</Link>
+                                <div className="px-3 py-2">
+                                    <p className="text-sm font-medium text-gray-900">{user.name}</p>
+                                    <p className="text-xs text-gray-500 truncate">{user.email}</p>
+                                </div>
+                                <button onClick={logout} className="block w-full text-left px-3 py-2 text-base font-medium text-red-600 hover:bg-gray-50">Çıkış Yap</button>
+                            </div>
+                        ) : (
+                            <div className="px-3 py-2">
+                                <Button onClick={() => window.alert('Mock Login triggered! User set in AuthContext.')} className="w-full">Giriş Yap</Button>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
         </nav>
     );
 }
